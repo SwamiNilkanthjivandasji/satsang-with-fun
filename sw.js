@@ -1,8 +1,8 @@
 // Simple offline cache for the app shell and static data.
-const CACHE = 'swf-v2';
+const CACHE = 'swf-v3';
 const SHELL = [
   './', 'index.html', 'css/styles.css',
-  'js/app.js', 'js/store.js', 'js/i18n.js', 'js/config.js', 'js/games/prashn.js', 'js/games/shatru.js', 'js/games/shatru-core.js', 'js/games/charan.js', 'js/games/charan-engine.js', 'js/games/charan-levels.js', 'data/charan.json',
+  'js/app.js', 'js/store.js', 'js/i18n.js', 'js/config.js', 'js/games/prashn.js', 'js/games/shatru.js', 'js/games/shatru-core.js', 'js/games/charan.js', 'js/games/charan-engine.js', 'js/games/charan-levels.js', 'js/games/charan-quiz.js', 'js/games/memory.js', 'data/charan.json',
   'data/menu.json', 'data/prashn.json', 'icons/icon.svg', 'manifest.webmanifest',
 ];
 

@@ -1,21 +1,367 @@
 {
-  "_note": "CONTENT REQUIRED. Fill in the 16 chihnas (name and meaning, Gujarati and English). Until a name is filled in, the app shows 'Chihna N'. Optional 'image' (e.g. icons/charan/01.svg) replaces the placeholder tile art for that chihna.",
-  "chihnas": [
-    { "id": 1, "name": null, "meaning": null, "image": null },
-    { "id": 2, "name": null, "meaning": null, "image": null },
-    { "id": 3, "name": null, "meaning": null, "image": null },
-    { "id": 4, "name": null, "meaning": null, "image": null },
-    { "id": 5, "name": null, "meaning": null, "image": null },
-    { "id": 6, "name": null, "meaning": null, "image": null },
-    { "id": 7, "name": null, "meaning": null, "image": null },
-    { "id": 8, "name": null, "meaning": null, "image": null },
-    { "id": 9, "name": null, "meaning": null, "image": null },
-    { "id": 10, "name": null, "meaning": null, "image": null },
-    { "id": 11, "name": null, "meaning": null, "image": null },
-    { "id": 12, "name": null, "meaning": null, "image": null },
-    { "id": 13, "name": null, "meaning": null, "image": null },
-    { "id": 14, "name": null, "meaning": null, "image": null },
-    { "id": 15, "name": null, "meaning": null, "image": null },
-    { "id": 16, "name": null, "meaning": null, "image": null }
-  ]
+ "_note": "Names, feet, order and meanings from \"Charnavind: Lord's Lotus Feet\" (swaminarayan.faith); Gujarati names/spots from the temple charanvidhi picture. Meanings are English only (Gujarati meaning = null, to be supplied). Images supplied by the client from their existing app.",
+ "source": {
+  "title": "Charnavind: Lord's Lotus Feet",
+  "url": "https://www.swaminarayan.faith/articles/charnavind-lords-lotus-feet"
+ },
+ "reference": "icons/charan/charanvidhi.jpg",
+ "chihnas": [
+  {
+   "id": "swastik",
+   "order": 1,
+   "name": {
+    "en": "Swastik",
+    "gu": "સ્વસ્તિક"
+   },
+   "what": "sacred cross",
+   "foot": "right",
+   "image": "icons/charan/01.png",
+   "spots": [
+    {
+     "x": 0.308,
+     "y": 0.087,
+     "d": 0.09
+    }
+   ],
+   "meaning": {
+    "en": "Good Luck.",
+    "gu": null
+   }
+  },
+  {
+   "id": "ashtakon",
+   "order": 2,
+   "name": {
+    "en": "Ashtakon",
+    "gu": "અષ્ટકોણ"
+   },
+   "what": "octagon",
+   "foot": "right",
+   "image": "icons/charan/02.png",
+   "spots": [
+    {
+     "x": 0.301,
+     "y": 0.212,
+     "d": 0.09
+    }
+   ],
+   "meaning": {
+    "en": "Easily able to overcome hardship arising from the elements of the universe.",
+    "gu": null
+   }
+  },
+  {
+   "id": "ankush",
+   "order": 3,
+   "name": {
+    "en": "Ankush",
+    "gu": "અંકુશ"
+   },
+   "what": "goad",
+   "foot": "right",
+   "image": "icons/charan/03.png",
+   "spots": [
+    {
+     "x": 0.157,
+     "y": 0.4,
+     "d": 0.11
+    }
+   ],
+   "meaning": {
+    "en": "Control over mind and senses, in the same way an elephant owner controls his elephant.",
+    "gu": null
+   }
+  },
+  {
+   "id": "kamal",
+   "order": 4,
+   "name": {
+    "en": "Kamal",
+    "gu": "કમળ"
+   },
+   "what": "lotus",
+   "foot": "right",
+   "image": "icons/charan/04.png",
+   "spots": [
+    {
+     "x": 0.089,
+     "y": 0.624,
+     "d": 0.09
+    }
+   ],
+   "meaning": {
+    "en": "Constant focus on Lord Swaminarayan is achieved, forces of maya are kept at bay.",
+    "gu": null
+   }
+  },
+  {
+   "id": "ketu",
+   "order": 5,
+   "name": {
+    "en": "Ketu",
+    "gu": "ધ્વજ"
+   },
+   "what": "flag",
+   "foot": "right",
+   "image": "icons/charan/05.png",
+   "spots": [
+    {
+     "x": 0.194,
+     "y": 0.651,
+     "d": 0.09
+    }
+   ],
+   "meaning": {
+    "en": "Guided through life with the principles of Lord Shree Swaminarayan.",
+    "gu": null
+   }
+  },
+  {
+   "id": "urdhva-rekha",
+   "order": 6,
+   "name": {
+    "en": "Urdhva Rekha",
+    "gu": "ઊર્ધ્વરેખા"
+   },
+   "what": "ascendant lines",
+   "foot": "both",
+   "image": "icons/charan/06.png",
+   "spots": [
+    {
+     "x": 0.259,
+     "y": 0.732,
+     "d": 0.09
+    },
+    {
+     "x": 0.733,
+     "y": 0.772,
+     "d": 0.09
+    }
+   ],
+   "meaning": {
+    "en": "Attainment of salvation.",
+    "gu": null
+   }
+  },
+  {
+   "id": "vajra",
+   "order": 7,
+   "name": {
+    "en": "Vajra",
+    "gu": "વજ્ર"
+   },
+   "what": "sword",
+   "foot": "right",
+   "image": "icons/charan/07.png",
+   "spots": [
+    {
+     "x": 0.365,
+     "y": 0.772,
+     "d": 0.09
+    }
+   ],
+   "meaning": {
+    "en": "Inner negative forces and evils are overcome.",
+    "gu": null
+   }
+  },
+  {
+   "id": "jambu",
+   "order": 8,
+   "name": {
+    "en": "Jambu",
+    "gu": "જાંબુ"
+   },
+   "what": "blackberry",
+   "foot": "right",
+   "image": "icons/charan/08.png",
+   "spots": [
+    {
+     "x": 0.434,
+     "y": 0.698,
+     "d": 0.09
+    }
+   ],
+   "meaning": {
+    "en": "Liberated from the desire of taste.",
+    "gu": null
+   }
+  },
+  {
+   "id": "java",
+   "order": 9,
+   "name": {
+    "en": "Java",
+    "gu": "જવ"
+   },
+   "what": "barley grain",
+   "foot": "right",
+   "image": "icons/charan/09.png",
+   "spots": [
+    {
+     "x": 0.421,
+     "y": 0.902,
+     "d": 0.09
+    }
+   ],
+   "meaning": {
+    "en": "Attainment of inner tranquillity and eradication of sins.",
+    "gu": null
+   }
+  },
+  {
+   "id": "matsya",
+   "order": 10,
+   "name": {
+    "en": "Matsya",
+    "gu": "મત્સ્ય"
+   },
+   "what": "fish",
+   "foot": "left",
+   "image": "icons/charan/10.png",
+   "spots": [
+    {
+     "x": 0.697,
+     "y": 0.105,
+     "d": 0.12
+    }
+   ],
+   "meaning": {
+    "en": "Permanent and inseparable bond developed with Lord Swaminarayan.",
+    "gu": null
+   }
+  },
+  {
+   "id": "trikon",
+   "order": 11,
+   "name": {
+    "en": "Trikon",
+    "gu": "ત્રિકોણ"
+   },
+   "what": "triangle",
+   "foot": "left",
+   "image": "icons/charan/11.png",
+   "spots": [
+    {
+     "x": 0.713,
+     "y": 0.204,
+     "d": 0.09
+    }
+   ],
+   "meaning": {
+    "en": "The three forms of suffering, being mental suffering, suffering imposed by other beings and natural hardships are eliminated.",
+    "gu": null
+   }
+  },
+  {
+   "id": "gaupad",
+   "order": 12,
+   "name": {
+    "en": "Gaupad",
+    "gu": "ગોપદ"
+   },
+   "what": "cow hoof print",
+   "foot": "left",
+   "image": "icons/charan/12.png",
+   "spots": [
+    {
+     "x": 0.869,
+     "y": 0.436,
+     "d": 0.09
+    }
+   ],
+   "meaning": {
+    "en": "Easily able to break away from the cycle of birth and death.",
+    "gu": null
+   }
+  },
+  {
+   "id": "dhanush",
+   "order": 13,
+   "name": {
+    "en": "Dhanush",
+    "gu": "ધનુષ"
+   },
+   "what": "bow",
+   "foot": "left",
+   "image": "icons/charan/13.png",
+   "spots": [
+    {
+     "x": 0.781,
+     "y": 0.544,
+     "d": 0.09
+    }
+   ],
+   "meaning": {
+    "en": "Inner enemies are overcome.",
+    "gu": null
+   }
+  },
+  {
+   "id": "vyom",
+   "order": 14,
+   "name": {
+    "en": "Vyom",
+    "gu": "વ્યોમ"
+   },
+   "what": "space",
+   "foot": "left",
+   "image": "icons/charan/14.png",
+   "spots": [
+    {
+     "x": 0.908,
+     "y": 0.632,
+     "d": 0.09
+    }
+   ],
+   "meaning": {
+    "en": "The heart remains pure and does not get polluted by worldly objects.",
+    "gu": null
+   }
+  },
+  {
+   "id": "ardha-chandra",
+   "order": 15,
+   "name": {
+    "en": "Ardha Chandra",
+    "gu": "અર્ધચંદ્ર"
+   },
+   "what": "half moon",
+   "foot": "left",
+   "image": "icons/charan/15.png",
+   "spots": [
+    {
+     "x": 0.814,
+     "y": 0.713,
+     "d": 0.09
+    }
+   ],
+   "meaning": {
+    "en": "State of calmness attained in the heart at all times.",
+    "gu": null
+   }
+  },
+  {
+   "id": "kalash",
+   "order": 16,
+   "name": {
+    "en": "Kalash",
+    "gu": "કળશ"
+   },
+   "what": "holy pot",
+   "foot": "left",
+   "image": "icons/charan/16.png",
+   "spots": [
+    {
+     "x": 0.613,
+     "y": 0.725,
+     "d": 0.12
+    }
+   ],
+   "meaning": {
+    "en": "Goal of salvation and aims in life are attained.",
+    "gu": null
+   }
+  }
+ ]
 }

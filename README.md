@@ -14,8 +14,10 @@ Satsang with Fun – a mobile-first, installable (PWA) web app with quizzes and 
 | Gujarati / English switch | Done (UI text; questions have optional `en`) |
 | Offline shell + install prompt | Done |
 | Inner Enemies (`shatru`): canvas shooter, 6 faults → 4 virtue gems → 4 powers, 5 waves, 3 lives, best score saved | Done |
-| Charanvidhi Master (`charan`): match-3, 8×8, phase 1 only (16 levels), hearts, chest, chihna collection | Done for phase 1. Phases 2–5 are locked ("coming soon") – not defined. **The 16 chihna names/meanings/art are empty placeholders; supply them in `data/charan.json` and `icons/charan/`.** |
-| Ekadashi, Vachanamrut, Dhyan Darshan, Memory, 5 traditional games | **Not built** – shown as "Coming soon" |
+| Charanvidhi Master (`charan`): match-3 8×8 + quiz steps, all 5 phases / 65 levels (Discover, Identify, Which foot?, Place, Master), hearts, chihna collection, 16 real chihna images + charanvidhi picture | Done. Chihna meanings are English only (`meaning.gu` is null) |
+| Fruit & Flower Memory (`memory`): study paper 15/20/25 s, 6/9/12 items, drag or tap to place, stars | Done |
+| Ekadashi, Vachanamrut, Dhyan Darshan | **Not built** – shown as "Coming soon" (Ekadashi and Dhyan Darshan exist in the reference app; Vachanamrut does not) |
+| 5 traditional games (Kabaddi, Kho-Kho, Langdi, Gilli-Danda, Satodiyu) | **Not built** – they are "Coming soon" in the reference app too; no rules or content exist to follow |
 
 ## Run locally
 
@@ -65,6 +67,11 @@ With no Supabase keys the app runs in **local-only mode**: progress stays in the
 | A14 | Charanvidhi hearts | 5 hearts, one lost per failed level, refill after 15 min. |
 | A15 | Charanvidhi levels | Goal/moves/colour count follow a formula (`js/games/charan-levels.js`), tuned with a bot, not real players. Finishing level N unlocks N+1 and reveals chihna N. |
 | A16 | Mechanics source | Mechanics taken from the reference's help text and limited play, not full observation; differences are possible. |
+| A17 | Image/content rights | Client stated (chat, 2026-11-05) the temple chihna pictures and the charanvidhi picture are theirs; they are copied from the reference app's page (`icons/charan/`). Earlier in the project the client said the reference site belongs to someone else. **Get written confirmation of rights before publishing.** |
+| A18 | Chihna per level | Phases 2–4 ask about chihna `(level-1) mod 16` (level 17 → Swastik). The reference uses its own order; ours is simpler. |
+| A19 | Quiz rules | Wrong answers never cost a heart (as in the reference). Leaving a started level does not cost a heart (reference does; not copied). Place-phase covers sit on the 17 spots; chihnas placed in earlier Place levels are uncovered. |
+| A20 | Memory game | Items are Unicode emoji (platform-dependent look), 3×4 jittered grid; stars 3 / 2 (1–3 mistakes) / 1, as in the reference. |
+| A21 | Level difficulty 17–65 | Goal 34–37 tiles in 44–46 moves, 7 tile kinds; checked with a greedy bot (5–9 of 12 wins), not real players. |
 
 ## Known risks
 

@@ -1,6 +1,7 @@
 // Charanvidhi Master (ચરણવિધિ માસ્ટર) – match-3 that unlocks the 16 chihnas, one per level.
 import { Board, makeRng, COLS, ROWS } from './charan-engine.js';
-import { levelConfig, PHASE1_LEVELS } from './charan-levels.js';
+import { levelConfig, PHASES, TOTAL_LEVELS, phaseOf, chihnaFor } from './charan-levels.js';
+import { runQuiz, runMaster, QL } from './charan-quiz.js';
 
 const GID = 'charan';
 const HEARTS_MAX = 5;
@@ -39,7 +40,14 @@ const L = {
     already: 'આ ચિહ્ન તમે પહેલાં જ શોધેલું છે.', needText: 'આ ચિહ્નનું નામ અને અર્થ ઉમેરવાના બાકી છે.', next: 'આગળનું લેવલ', back: 'નકશા પર',
     lose: 'ચાલ પૂરી થઈ', retry: 'ફરી પ્રયત્ન', collection: 'મારો સંગ્રહ', discovered: 'ચિહ્નો શોધાયાં', collectionHelp: 'ચિહ્ન ઉપર દબાવીને તેના વિશે વાંચો.',
     noHearts: 'બધાં ❤ પૂરાં થયાં. થોડી વાર આરામ કરો.', heartsIn: 'નવાં ❤ મળશે', locked: 'આ લેવલ લૉક છે', pause: 'થોભાવો', resume: 'ચાલુ રાખો', menu: 'નકશા પર જાઓ',
-    hint: 'સંકેત', reshuffle: 'ટાઇલ ફરી ગોઠવાઈ', close: 'બંધ કરો', phaseSoon: 'આ તબક્કો આગળ ઉમેરાશે',
+    hint: 'સંકેત', reshuffle: 'ટાઇલ ફરી ગોઠવાઈ', close: 'બંધ કરો', phaseLocked: 'પહેલાં આગલા તબક્કાનાં લેવલ પૂરાં કરો',
+    phases: [
+      { name: 'શોધ', help: 'ટાઇલ મેળવો, પછી ખજાનાની પેટી ખોલીને નવું ચિહ્ન શોધો.' },
+      { name: 'ઓળખો', help: 'ટાઇલ મેળવો, પછી ચિહ્નનું સાચું નામ પસંદ કરો.' },
+      { name: 'કયો ચરણ?', help: 'ટાઇલ મેળવો, પછી કહો કે ચિહ્ન ભગવાનના કયા ચરણમાં છે.' },
+      { name: 'સ્થાન', help: 'ટાઇલ મેળવો, પછી ચરણવિધિમાં ચિહ્નનું સ્થાન શોધો.' },
+      { name: 'ચરણવિધિ માસ્ટર', help: 'અંતિમ પડકાર: બધાં ૧૬ ચિહ્નોનાં નામ અને સ્થાન.' },
+    ],
   },
   en: {
     title: 'Charanvidhi Master', phase: 'Phase', discover: 'Discover', phaseHelp: 'Match tiles, then open a treasure chest to discover a new chihna.',
@@ -51,7 +59,14 @@ const L = {
     already: 'You have already discovered this chihna.', needText: 'The name and meaning of this chihna are still to be added.', next: 'Next level', back: 'Back to map',
     lose: 'Out of moves', retry: 'Try again', collection: 'My collection', discovered: 'chihnas discovered', collectionHelp: 'Tap a chihna to read about it.',
     noHearts: 'No hearts left. Take a short rest.', heartsIn: 'New hearts in', locked: 'This level is locked', pause: 'Pause', resume: 'Resume', menu: 'Back to map',
-    hint: 'Hint', reshuffle: 'Tiles reshuffled', close: 'Close', phaseSoon: 'This phase will be added later',
+    hint: 'Hint', reshuffle: 'Tiles reshuffled', close: 'Close', phaseLocked: 'Finish the earlier levels to open this phase',
+    phases: [
+      { name: 'Discover', help: 'Match tiles, then open a treasure chest to discover a new chihna.' },
+      { name: 'Identify', help: 'Match tiles, then choose the right name for the chihna.' },
+      { name: 'Which foot?', help: 'Match tiles, then say which of Bhagwan’s feet the chihna is on.' },
+      { name: 'Place', help: 'Match tiles, then find where the chihna is on the charanvidhi.' },
+      { name: 'Charanvidhi Master', help: 'The final challenge: name and place all 16 chihnas.' },
+    ],
   },
 };
 
@@ -71,7 +86,7 @@ export async function mount(root, ctx) {
     return p;
   }
 
-  let screen = 'map'; let cur = null; let busy = false; let timer = null; let selected = null; let alive = true;
+  let screen = 'map'; let viewPhase = 1; let cur = null; let busy = false; let timer = null; let selected = null; let alive = true;
 
   // ---------- Header bits ----------
   const heartsHtml = (p) => `<span class="hearts" aria-label="${p.hearts}/${HEARTS_MAX}">${'❤'.repeat(p.hearts)}${'♡'.repeat(HEARTS_MAX - p.hearts)} <small>${p.hearts}/${HEARTS_MAX}</small></span>`;
@@ -86,19 +101,19 @@ export async function mount(root, ctx) {
         <div class="topbar-title">${esc(t.title)}</div>
         <div class="topbar-actions">${heartsHtml(p)}</div>
       </header>
-      <div class="phase-head"><h2>${esc(t.discover)}</h2><p class="muted small">${esc(t.phase)} 1 / 5</p>
-        <div class="phase-dots">${[1, 2, 3, 4, 5].map((n) => `<button class="pdot ${n === 1 ? 'on' : ''}" data-c="phase:${n}" aria-label="${esc(t.phase)} ${n}">${n === 1 ? 1 : '🔒'}</button>`).join('')}</div>
-        <p class="phase-help">${esc(t.phaseHelp)}</p></div>
-      <div class="lvl-grid">
-        ${Array.from({ length: PHASE1_LEVELS }, (_, i) => {
-          const n = i + 1; const lock = n > p.unlocked; const done = p.done.includes(n);
-          return `<button class="lv ${lock ? 'lock' : ''} ${done ? 'done' : ''} ${n === p.unlocked ? 'now' : ''}" data-c="level:${n}" aria-label="${esc(t.level)} ${n}">${lock ? '🔒' : n}${done ? '<i>✓</i>' : ''}</button>`;
+      <div class="phase-head"><h2>${esc(t.phases[viewPhase - 1].name)}</h2><p class="muted small">${esc(t.phase)} ${viewPhase} / 5</p>
+        <div class="phase-dots">${PHASES.map((ph) => { const open = ph.from <= p.unlocked; return `<button class="pdot ${ph.n === viewPhase ? 'on' : ''}" data-c="phase:${ph.n}" aria-label="${esc(t.phase)} ${ph.n}">${open ? ph.n : '🔒'}</button>`; }).join('')}</div>
+        <p class="phase-help">${esc(t.phases[viewPhase - 1].help)}</p></div>
+      <div class="lvl-grid ${viewPhase === 5 ? 'single' : ''}">
+        ${Array.from({ length: PHASES[viewPhase - 1].to - PHASES[viewPhase - 1].from + 1 }, (_, i) => {
+          const n = PHASES[viewPhase - 1].from + i; const lock = n > p.unlocked; const done = p.done.includes(n);
+          return `<button class="lv ${lock ? 'lock' : ''} ${done ? 'done' : ''} ${n === p.unlocked ? 'now' : ''}" data-c="level:${n}" aria-label="${esc(t.level)} ${n}">${lock ? '🔒' : (n === TOTAL_LEVELS ? '👑' : n)}${done ? '<i>✓</i>' : ''}</button>`;
         }).join('')}
       </div>
       <div class="stats">
         <button class="stat" data-c="collection"><span>${esc(t.myChihnas)}</span><strong>${p.discovered.length} ${esc(t.of)} 16</strong><em>›</em></button>
-        <div class="stat"><span>${esc(t.levelsDone)}</span><strong>${p.done.length} ${esc(t.of)} 65</strong>
-          <div class="bar"><i style="width:${(p.done.length / 65) * 100}%"></i></div></div>
+        <div class="stat"><span>${esc(t.levelsDone)}</span><strong>${p.done.length} ${esc(t.of)} ${TOTAL_LEVELS}</strong>
+          <div class="bar"><i style="width:${(p.done.length / TOTAL_LEVELS) * 100}%"></i></div></div>
       </div>
       <p class="stage-best">${esc(t.tag)}</p><p class="muted center small">${esc(t.tagLine)}</p>
     </section>`;
@@ -133,7 +148,7 @@ export async function mount(root, ctx) {
       ${fresh ? `<span class="badge">✨ ${esc(t.newChihna)}</span>` : ''}
       <div class="chihna-art">${c.image ? `<img src="${esc(c.image)}" alt="" width="84" height="84">` : glyphSvg(i, 84)}</div>
       <h3>${esc(chihnaName(i))}</h3>
-      <p class="muted">${esc((c.meaning && tr(c.meaning)) || t.needText)}</p>
+      <p class="muted">${esc((c.meaning && (c.meaning[getLang()] || c.meaning.gu || c.meaning.en)) || t.needText)}</p>
       <button class="btn btn-primary" data-d>${esc(fresh ? t.next : t.close)}</button></div>`, { dismissible: !fresh });
     m.el.querySelector('[data-d]').addEventListener('click', () => { m.close(); onDone && onDone(); });
   }
@@ -175,7 +190,7 @@ export async function mount(root, ctx) {
     const t = T();
     root.innerHTML = `<section class="screen charan level">
       <header class="topbar"><button class="chip chip-round" data-c="pause" aria-label="${esc(t.pause)}">Ⅱ</button>
-        <div class="topbar-title">${esc(t.discover)} · ${esc(t.level)} ${cur.n}</div>
+        <div class="topbar-title">${esc(t.phases[phaseOf(cur.n).n - 1].name)} · ${esc(t.level)} ${cur.n}</div>
         <div class="topbar-actions"><button class="chip chip-round" data-c="hint" aria-label="${esc(t.hint)}">💡</button></div></header>
       <div class="hud" id="hud">${hudHtml()}</div>
       <div class="mboard" id="mboard" style="--cols:${COLS}">${boardHtml(cur.board.g)}</div>
@@ -220,12 +235,46 @@ export async function mount(root, ctx) {
   }
   function renderBoardOnly() { if (mb()) mb().innerHTML = boardHtml(cur.board.g); }
 
+  function finishLevel(n) {
+    const p = prog(); const first = !p.done.includes(n);
+    if (first) p.done.push(n);
+    p.unlocked = Math.max(p.unlocked, Math.min(n + 1, TOTAL_LEVELS));
+    p.best[n] = Math.max(p.best[n] || 0, cur ? cur.score : 0);
+    save(p); return p;
+  }
+  function afterLevel(n) {
+    const t = T(); const nextN = n + 1;
+    const cont = ctx.openModal(`<div class="q-body"><div class="trophy">🏆</div>
+      ${nextN <= TOTAL_LEVELS ? `<button class="btn btn-primary" data-x="next">${esc(t.next)}</button>` : ''}
+      <button class="btn btn-ghost" data-x="map">${esc(t.back)}</button></div>`, { dismissible: false });
+    cont.el.querySelector('[data-x=next]')?.addEventListener('click', () => { cont.close(); startLevel(nextN); });
+    cont.el.querySelector('[data-x=map]').addEventListener('click', () => { cont.close(); viewPhase = phaseOf(Math.min(nextN, TOTAL_LEVELS)).n; renderMap(); });
+  }
+  function startQuiz() {
+    const n = cur.n; const ph = phaseOf(n); const t = T(); screen = 'quiz';
+    root.innerHTML = `<section class="screen charan level"><header class="topbar"><button class="chip" data-c="map">${esc(ctx.t('back'))}</button>
+      <div class="topbar-title">${esc(t.phases[ph.n - 1].name)} · ${esc(t.level)} ${n}</div><div class="topbar-actions"></div></header><div id="quiz"></div></section>`;
+    const box = root.querySelector('#quiz');
+    const onDone = () => { box.onclick = null; screen = 'map'; finishLevel(n); afterLevel(n); };
+    if (ph.id === 'master') runMaster(box, { ctx, content, onDone: () => { finishLevel(n); viewPhase = 5; renderMap(); } });
+    else {
+      const idx = chihnaFor(n); const kind = ph.id;
+      const placed = new Set(); if (kind === 'place') for (let k = 0; k < 16; k++) if (k !== idx && prog().done.includes(49 + k)) placed.add(k);
+      runQuiz(box, { kind, idx, content, ctx, placed, onDone });
+    }
+  }
   function win() {
     cur.over = true;
+    if (phaseOf(cur.n).n > 1) {
+      const t = T();
+      const m = ctx.openModal(`<div class="q-body"><h3>${esc(t.win)}</h3><p class="q-answer">${esc(t.score)}: ${cur.score}</p><p class="muted">${esc(QL[getLang()].challenge)}</p><button class="btn btn-primary" data-d>${esc(t.next)}</button></div>`, { dismissible: false });
+      m.el.querySelector('[data-d]').addEventListener('click', () => { m.close(); startQuiz(); });
+      return;
+    }
     const t = T(); const p = prog();
     const first = !p.done.includes(cur.n);
     if (first) p.done.push(cur.n);
-    p.unlocked = Math.max(p.unlocked, Math.min(cur.n + 1, PHASE1_LEVELS));
+    p.unlocked = Math.max(p.unlocked, Math.min(cur.n + 1, TOTAL_LEVELS));
     p.best[cur.n] = Math.max(p.best[cur.n] || 0, cur.score);
     const isNew = !p.discovered.includes(cur.n);
     if (isNew) p.discovered.push(cur.n);
@@ -234,18 +283,10 @@ export async function mount(root, ctx) {
       <button class="chest" data-d aria-label="${esc(t.openChest)}">🎁</button><p class="muted">${esc(t.tapChest)}</p></div>`, { dismissible: false });
     m.el.querySelector('[data-d]').addEventListener('click', () => {
       m.close();
-      const next = () => {
-        const nextN = cur.n + 1;
-        const cont = ctx.openModal(`<div class="q-body"><div class="trophy">🏆</div>
-          ${nextN <= PHASE1_LEVELS ? `<button class="btn btn-primary" data-x="next">${esc(t.next)}</button>` : ''}
-          <button class="btn btn-ghost" data-x="map">${esc(t.back)}</button></div>`, { dismissible: false });
-        cont.el.querySelector('[data-x=next]')?.addEventListener('click', () => { cont.close(); startLevel(nextN); });
-        cont.el.querySelector('[data-x=map]').addEventListener('click', () => { cont.close(); renderMap(); });
-      };
-      if (isNew) chihnaCard(cur.n - 1, { fresh: true, onDone: next });
+      if (isNew) chihnaCard(cur.n - 1, { fresh: true, onDone: () => afterLevel(cur.n) });
       else {
         const m2 = ctx.openModal(`<div class="q-body"><p>${esc(t.already)}</p><button class="btn btn-primary" data-d>${esc(t.next)}</button></div>`, { dismissible: false });
-        m2.el.querySelector('[data-d]').addEventListener('click', () => { m2.close(); next(); });
+        m2.el.querySelector('[data-d]').addEventListener('click', () => { m2.close(); afterLevel(cur.n); });
       }
     });
   }
@@ -296,7 +337,7 @@ export async function mount(root, ctx) {
     else if (cmd === 'level') startLevel(Number(arg));
     else if (cmd === 'collection') renderCollection();
     else if (cmd === 'chihna') chihnaCard(Number(arg) - 1);
-    else if (cmd === 'phase') { if (arg !== '1') ctx.toast(`${t.phaseSoon}`); }
+    else if (cmd === 'phase') { const ph = PHASES[Number(arg) - 1]; if (ph.from > prog().unlocked) ctx.toast(t.phaseLocked); else { viewPhase = ph.n; renderMap(); } }
     else if (cmd === 'hint') hint();
     else if (cmd === 'pause') {
       const m = ctx.openModal(`<h3>Ⅱ ${esc(t.pause)}</h3><button class="btn btn-primary" data-x="r">${esc(t.resume)}</button><button class="btn btn-ghost" data-x="m">${esc(t.menu)}</button>`, { dismissible: false });
