@@ -1,0 +1,63 @@
+{
+  "_note": "Sample content for Satsang Quiz. Replace/extend with your own questions. Each level has exactly 8 boxes. prize.kind: 'points' (value) or 'bonus' (extra turn + value). 'seconds' is optional per box.",
+  "levelsTotal": 5,
+  "categories": [
+    {
+      "id": "ramayan",
+      "group": "spiritual",
+      "name": { "gu": "રામાયણ", "en": "Ramayan" },
+      "levels": [
+        [
+          { "q": { "gu": "શ્રીરામના પિતાનું નામ શું હતું?", "en": "What was the name of Shri Ram’s father?" }, "a": { "gu": "રાજા દશરથ", "en": "King Dashrath" }, "prize": { "kind": "points", "value": 10 } },
+          { "q": { "gu": "શ્રીરામનાં પત્ની કોણ હતાં?", "en": "Who was Shri Ram’s wife?" }, "a": { "gu": "સીતાજી", "en": "Sitaji" }, "prize": { "kind": "points", "value": 20 } },
+          { "q": { "gu": "રામાયણના રચયિતા કોણ છે?", "en": "Who composed the Ramayan?" }, "a": { "gu": "મહર્ષિ વાલ્મીકિ", "en": "Maharshi Valmiki" }, "prize": { "kind": "points", "value": 10 } },
+          { "q": { "gu": "શ્રીરામને કેટલા વર્ષનો વનવાસ મળ્યો હતો?", "en": "For how many years was Shri Ram exiled to the forest?" }, "a": { "gu": "૧૪ વર્ષ", "en": "14 years" }, "prize": { "kind": "points", "value": 30 } },
+          { "q": { "gu": "વનવાસમાં શ્રીરામ સાથે કયા ભાઈ ગયા હતા?", "en": "Which brother accompanied Shri Ram into exile?" }, "a": { "gu": "લક્ષ્મણજી", "en": "Lakshmanji" }, "prize": { "kind": "points", "value": 20 } },
+          { "q": { "gu": "લંકાનો રાજા કોણ હતો?", "en": "Who was the king of Lanka?" }, "a": { "gu": "રાવણ", "en": "Ravan" }, "prize": { "kind": "bonus", "value": 10 } },
+          { "q": { "gu": "શ્રીરામના પરમ ભક્ત તરીકે કોણ પ્રસિદ્ધ છે?", "en": "Who is famous as Shri Ram’s greatest devotee?" }, "a": { "gu": "હનુમાનજી", "en": "Hanumanji" }, "prize": { "kind": "points", "value": 30 } },
+          { "q": { "gu": "અયોધ્યા કઈ નદીના કિનારે આવેલી છે?", "en": "On the banks of which river is Ayodhya located?" }, "a": { "gu": "સરયૂ નદી", "en": "The Sarayu river" }, "prize": { "kind": "points", "value": 50 } }
+        ],
+        [
+          { "q": { "gu": "રાવણના કયા ભાઈ શ્રીરામના પક્ષમાં આવ્યા?", "en": "Which brother of Ravan joined Shri Ram’s side?" }, "a": { "gu": "વિભીષણ", "en": "Vibhishan" }, "prize": { "kind": "points", "value": 20 } },
+          { "q": { "gu": "લંકામાં સીતાજીને કયા સ્થળે રાખવામાં આવ્યાં હતાં?", "en": "Where in Lanka was Sitaji kept?" }, "a": { "gu": "અશોકવાટિકા", "en": "Ashok Vatika" }, "prize": { "kind": "points", "value": 10 } },
+          { "q": { "gu": "શબરીએ શ્રીરામને કયાં ફળ ખવડાવ્યાં હતાં?", "en": "Which fruit did Shabari offer to Shri Ram?" }, "a": { "gu": "બોર", "en": "Ber (jujube)" }, "prize": { "kind": "points", "value": 30 } },
+          { "q": { "gu": "ભરતજીનાં માતાનું નામ શું હતું?", "en": "What was the name of Bharatji’s mother?" }, "a": { "gu": "કૈકેયી", "en": "Kaikeyi" }, "prize": { "kind": "points", "value": 20 } },
+          { "q": { "gu": "રામસેતુ બાંધવામાં કુશળ વાનરો કયા હતા?", "en": "Which two vanars were skilled in building Ram Setu?" }, "a": { "gu": "નલ અને નીલ", "en": "Nal and Neel" }, "prize": { "kind": "bonus", "value": 10 } },
+          { "q": { "gu": "સીતાજીને બચાવવા રાવણ સામે લડનાર ગીધરાજ કોણ હતા?", "en": "Which vulture-king fought Ravan to save Sitaji?" }, "a": { "gu": "જટાયુ", "en": "Jatayu" }, "prize": { "kind": "points", "value": 30 } },
+          { "q": { "gu": "લક્ષ્મણજીને સાજા કરવા હનુમાનજી કઈ વસ્તુ લાવ્યા હતા?", "en": "What did Hanumanji bring to heal Lakshmanji?" }, "a": { "gu": "સંજીવની બુટ્ટી", "en": "The Sanjivani herb" }, "prize": { "kind": "points", "value": 50 } },
+          { "q": { "gu": "રામાયણમાં કેટલા કાંડ છે?", "en": "How many kandas (books) are there in the Ramayan?" }, "a": { "gu": "સાત", "en": "Seven" }, "prize": { "kind": "points", "value": 10 } }
+        ]
+      ]
+    },
+    { "id": "mahabharat", "group": "spiritual", "name": { "gu": "મહાભારત", "en": "Mahabharat" }, "levels": [] },
+    { "id": "krishna", "group": "spiritual", "name": { "gu": "કૃષ્ણ લીલા", "en": "Krishna Leela" }, "levels": [] },
+    { "id": "hanuman", "group": "spiritual", "name": { "gu": "હનુમાનજી", "en": "Hanumanji" }, "levels": [] },
+    {
+      "id": "math",
+      "group": "math",
+      "name": { "gu": "સરવાળા-બાદબાકી-ગુણાકાર", "en": "Add, Subtract, Multiply" },
+      "levels": [
+        [
+          { "q": { "gu": "૫ + ૭ = ?", "en": "5 + 7 = ?" }, "a": { "gu": "૧૨", "en": "12" }, "prize": { "kind": "points", "value": 10 }, "seconds": 20 },
+          { "q": { "gu": "૯ + ૬ = ?", "en": "9 + 6 = ?" }, "a": { "gu": "૧૫", "en": "15" }, "prize": { "kind": "points", "value": 20 }, "seconds": 20 },
+          { "q": { "gu": "૨૦ − ૮ = ?", "en": "20 − 8 = ?" }, "a": { "gu": "૧૨", "en": "12" }, "prize": { "kind": "points", "value": 10 }, "seconds": 20 },
+          { "q": { "gu": "૧૫ − ૭ = ?", "en": "15 − 7 = ?" }, "a": { "gu": "૮", "en": "8" }, "prize": { "kind": "points", "value": 30 }, "seconds": 20 },
+          { "q": { "gu": "૩૦ + ૨૦ = ?", "en": "30 + 20 = ?" }, "a": { "gu": "૫૦", "en": "50" }, "prize": { "kind": "points", "value": 20 }, "seconds": 20 },
+          { "q": { "gu": "૧૦૦ − ૪૦ = ?", "en": "100 − 40 = ?" }, "a": { "gu": "૬૦", "en": "60" }, "prize": { "kind": "bonus", "value": 10 }, "seconds": 20 },
+          { "q": { "gu": "૮ + ૮ = ?", "en": "8 + 8 = ?" }, "a": { "gu": "૧૬", "en": "16" }, "prize": { "kind": "points", "value": 30 }, "seconds": 20 },
+          { "q": { "gu": "૨૫ + ૨૫ = ?", "en": "25 + 25 = ?" }, "a": { "gu": "૫૦", "en": "50" }, "prize": { "kind": "points", "value": 50 }, "seconds": 20 }
+        ],
+        [
+          { "q": { "gu": "૩ × ૪ = ?", "en": "3 × 4 = ?" }, "a": { "gu": "૧૨", "en": "12" }, "prize": { "kind": "points", "value": 10 }, "seconds": 25 },
+          { "q": { "gu": "૫ × ૬ = ?", "en": "5 × 6 = ?" }, "a": { "gu": "૩૦", "en": "30" }, "prize": { "kind": "points", "value": 20 }, "seconds": 25 },
+          { "q": { "gu": "૭ × ૮ = ?", "en": "7 × 8 = ?" }, "a": { "gu": "૫૬", "en": "56" }, "prize": { "kind": "points", "value": 30 }, "seconds": 25 },
+          { "q": { "gu": "૯ × ૯ = ?", "en": "9 × 9 = ?" }, "a": { "gu": "૮૧", "en": "81" }, "prize": { "kind": "points", "value": 50 }, "seconds": 25 },
+          { "q": { "gu": "૬ × ૭ = ?", "en": "6 × 7 = ?" }, "a": { "gu": "૪૨", "en": "42" }, "prize": { "kind": "bonus", "value": 10 }, "seconds": 25 },
+          { "q": { "gu": "૧૨ ÷ ૩ = ?", "en": "12 ÷ 3 = ?" }, "a": { "gu": "૪", "en": "4" }, "prize": { "kind": "points", "value": 20 }, "seconds": 25 },
+          { "q": { "gu": "૨૪ ÷ ૬ = ?", "en": "24 ÷ 6 = ?" }, "a": { "gu": "૪", "en": "4" }, "prize": { "kind": "points", "value": 10 }, "seconds": 25 },
+          { "q": { "gu": "૮ × ૫ = ?", "en": "8 × 5 = ?" }, "a": { "gu": "૪૦", "en": "40" }, "prize": { "kind": "points", "value": 30 }, "seconds": 25 }
+        ]
+      ]
+    }
+  ]
+}

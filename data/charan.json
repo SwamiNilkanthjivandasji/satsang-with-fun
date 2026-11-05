@@ -1,0 +1,21 @@
+{
+  "_note": "CONTENT REQUIRED. Fill in the 16 chihnas (name and meaning, Gujarati and English). Until a name is filled in, the app shows 'Chihna N'. Optional 'image' (e.g. icons/charan/01.svg) replaces the placeholder tile art for that chihna.",
+  "chihnas": [
+    { "id": 1, "name": null, "meaning": null, "image": null },
+    { "id": 2, "name": null, "meaning": null, "image": null },
+    { "id": 3, "name": null, "meaning": null, "image": null },
+    { "id": 4, "name": null, "meaning": null, "image": null },
+    { "id": 5, "name": null, "meaning": null, "image": null },
+    { "id": 6, "name": null, "meaning": null, "image": null },
+    { "id": 7, "name": null, "meaning": null, "image": null },
+    { "id": 8, "name": null, "meaning": null, "image": null },
+    { "id": 9, "name": null, "meaning": null, "image": null },
+    { "id": 10, "name": null, "meaning": null, "image": null },
+    { "id": 11, "name": null, "meaning": null, "image": null },
+    { "id": 12, "name": null, "meaning": null, "image": null },
+    { "id": 13, "name": null, "meaning": null, "image": null },
+    { "id": 14, "name": null, "meaning": null, "image": null },
+    { "id": 15, "name": null, "meaning": null, "image": null },
+    { "id": 16, "name": null, "meaning": null, "image": null }
+  ]
+}

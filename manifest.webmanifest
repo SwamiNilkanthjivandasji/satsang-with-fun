@@ -1,0 +1,14 @@
+{
+  "name": "Satsang with Fun",
+  "short_name": "Satsang Fun",
+  "description": "Quizzes, memory and learning games for the whole family.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF4E3",
+  "theme_color": "#E8742A",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "sections": [
+    {
+      "id": "knowledge",
+      "icon": "book",
+      "name": {
+        "gu": "જ્ઞાન-પ્રશ્ન",
+        "en": "Knowledge Quiz"
+      },
+      "items": [
+        {
+          "id": "prashn",
+          "name": {
+            "gu": "સત્સંગ પ્રશ્ન",
+            "en": "Satsang Quiz"
+          },
+          "desc": {
+            "gu": "ટીમ બનાવીને બોક્સ ખોલો અને પ્રશ્નોના જવાબ આપો",
+            "en": "Form teams, open boxes and answer questions"
+          },
+          "ready": true
+        },
+        {
+          "id": "ekadashi",
+          "name": {
+            "gu": "એકાદશી",
+            "en": "Ekadashi"
+          },
+          "desc": {
+            "gu": "એકાદશી વિશે જાણો અને રમો",
+            "en": "Learn and play about Ekadashi"
+          },
+          "ready": false
+        },
+        {
+          "id": "vachanamrut",
+          "name": {
+            "gu": "વચનામૃત",
+            "en": "Vachanamrut"
+          },
+          "desc": {
+            "gu": "વચનામૃત આધારિત પ્રશ્નો",
+            "en": "Questions based on the Vachanamrut"
+          },
+          "ready": false
+        }
+      ]
+    },
+    {
+      "id": "devotion",
+      "icon": "lotus",
+      "name": {
+        "gu": "ધ્યાન-ભક્તિ",
+        "en": "Devotion"
+      },
+      "items": [
+        {
+          "id": "dhyan",
+          "name": {
+            "gu": "ધ્યાન દર્શન",
+            "en": "Dhyan Darshan"
+          },
+          "desc": {
+            "gu": "મૂર્તિ પર ચિહ્ન યાદ કરીને મૂકો",
+            "en": "Recall and place the marks on the murti"
+          },
+          "ready": false
+        },
+        {
+          "id": "charan",
+          "name": {
+            "gu": "ચરણવિધિ માસ્ટર",
+            "en": "Charanvidhi Master"
+          },
+          "desc": {
+            "gu": "ચરણનાં ચિહ્ન ઓળખો",
+            "en": "Identify the marks of the holy feet"
+          },
+          "ready": true
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "icon": "cards",
+      "name": {
+        "gu": "યાદશક્તિ",
+        "en": "Memory"
+      },
+      "items": [
+        {
+          "id": "memory",
+          "name": {
+            "gu": "ફળ ફૂલ મેમરી ગેમ",
+            "en": "Fruit & Flower Memory"
+          },
+          "desc": {
+            "gu": "જોયેલું યાદ રાખી જગ્યાએ મૂકો",
+            "en": "Remember what you saw and place it back"
+          },
+          "ready": false
+        }
+      ]
+    },
+    {
+      "id": "fun",
+      "icon": "gamepad",
+      "name": {
+        "gu": "મજાની રમત",
+        "en": "Fun Games"
+      },
+      "items": [
+        {
+          "id": "shatru",
+          "name": {
+            "gu": "અંતઃશત્રુ વિજય",
+            "en": "Inner Enemies"
+          },
+          "desc": {
+            "gu": "દોષોને હરાવો",
+            "en": "Defeat the faults"
+          },
+          "ready": true
+        }
+      ]
+    },
+    {
+      "id": "learn",
+      "icon": "ball",
+      "wide": true,
+      "name": {
+        "gu": "રમો અને શીખો",
+        "en": "Play & Learn"
+      },
+      "items": [
+        {
+          "id": "kabaddi",
+          "name": {
+            "gu": "કબડ્ડી",
+            "en": "Kabaddi"
+          },
+          "desc": {
+            "gu": "જૂની રમતની માહિતી અને ચિત્ર",
+            "en": "About the traditional game"
+          },
+          "ready": false
+        },
+        {
+          "id": "khokho",
+          "name": {
+            "gu": "ખો-ખો",
+            "en": "Kho-Kho"
+          },
+          "desc": {
+            "gu": "જૂની રમતની માહિતી અને ચિત્ર",
+            "en": "About the traditional game"
+          },
+          "ready": false
+        },
+        {
+          "id": "langdi",
+          "name": {
+            "gu": "લંગડી",
+            "en": "Langdi"
+          },
+          "desc": {
+            "gu": "જૂની રમતની માહિતી અને ચિત્ર",
+            "en": "About the traditional game"
+          },
+          "ready": false
+        },
+        {
+          "id": "gilli",
+          "name": {
+            "gu": "ગિલ્લી-દંડા",
+            "en": "Gilli-Danda"
+          },
+          "desc": {
+            "gu": "જૂની રમતની માહિતી અને ચિત્ર",
+            "en": "About the traditional game"
+          },
+          "ready": false
+        },
+        {
+          "id": "satodiyu",
+          "name": {
+            "gu": "સાતોડિયું",
+            "en": "Satodiyu"
+          },
+          "desc": {
+            "gu": "જૂની રમતની માહિતી અને ચિત્ર",
+            "en": "About the traditional game"
+          },
+          "ready": false
+        }
+      ]
+    }
+  ]
+}
